@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Témoignages clients — Benjamin Mahieu, artisan sellier.">
+  <title>Témoignages — Benjamin Mahieu, Artisan sellier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      position: relative; height: 50vh; min-height: 360px;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+    .page-hero__image {
+      position: absolute; inset: 0;
+      background: var(--bleu) url('images/portrait-benjamin-cheval_3_11zon.jpg') center 30% / cover no-repeat;
+    }
+    .page-hero__image::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(30,60,90,0.3) 0%, rgba(20,45,70,0.78) 100%);
+    }
+    .page-hero__content { position: relative; z-index: 2; padding: 0 40px 60px; animation: fadeUp 0.9s cubic-bezier(0.25,0.46,0.45,0.94) both; }
+    .page-hero__content h1 { font-family: var(--serif); font-size: clamp(2.2rem, 4.5vw, 3.8rem); font-weight: 300; color: var(--blanc); line-height: 1.05; margin-bottom: 14px; }
+    .page-hero__content h1 em { font-style: italic; color: var(--or-clair); }
+    .page-hero__content p { font-size: 1rem; color: rgba(255,255,255,0.75); max-width: 500px; line-height: 1.7; }
+
+    /* TEMOIGNAGES CLIENTS */
+    .temoignages-page { background: var(--blanc); padding: 88px 0; }
+    .temoignages-page__header { text-align: center; margin-bottom: 64px; }
+    .temoignages-page__header h2 { font-family: var(--serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 400; color: var(--bleu); }
+    .temoignages-grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 28px; }
+    .temoignage-card { padding: 32px 28px; border: 1px solid var(--ivoire-fonce); transition: border-color var(--transition), box-shadow var(--transition); }
+    .temoignage-card:hover { border-color: var(--or); box-shadow: var(--shadow); }
+    .temoignage-card__guillemet { font-family: var(--serif); font-size: 3.5rem; line-height: 0.8; color: var(--or); opacity: 0.28; margin-bottom: 14px; }
+    .temoignage-card__texte { font-family: var(--serif); font-size: 1.02rem; font-style: italic; color: #3a3a3a; line-height: 1.75; margin-bottom: 22px; }
+    .temoignage-card__auteur { font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bleu); font-weight: 500; }
+    .temoignage-card__detail { font-size: 0.76rem; color: var(--gris); margin-top: 4px; }
+
+    /* TEMOIGNAGES PRO */
+    .temoignages-pro { background: var(--ivoire); padding: 88px 0; }
+    .temoignages-pro__header { text-align: center; margin-bottom: 60px; }
+    .temoignages-pro__header h2 { font-family: var(--serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 400; color: var(--bleu); }
+    .temoignages-pro__header p { font-size: 0.92rem; color: var(--gris); margin-top: 12px; }
+    .temoignages-pro__liste { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .temoignage-pro-card { background: var(--blanc); padding: 36px 32px; border-left: 3px solid var(--or); }
+    .temoignage-pro-card__texte { font-family: var(--serif); font-size: 1.05rem; font-style: italic; color: #3a3a3a; line-height: 1.8; margin-bottom: 24px; }
+    .temoignage-pro-card__auteur { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bleu); font-weight: 500; }
+    .temoignage-pro-card__fonction { font-size: 0.78rem; color: var(--gris); margin-top: 4px; }
+
+    /* CTA */
+    .cta-section { background: var(--bleu-section); padding: 72px 0; text-align: center; }
+    .cta-section h2 { font-family: var(--serif); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; color: var(--blanc); margin-bottom: 16px; }
+    .cta-section p { font-size: 0.97rem; color: rgba(255,255,255,0.65); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; font-style: italic; font-family: var(--serif); }
+    .btn-cta { display: inline-flex; align-items: center; gap: 12px; font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--bleu); background: var(--or); padding: 15px 36px; transition: background var(--transition); }
+    .btn-cta:hover { background: var(--or-clair); }
+
+    @media (max-width: 1024px) {
+      .temoignages-grille { grid-template-columns: 1fr 1fr; }
+      .temoignages-pro__liste { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .page-hero__content { padding: 0 20px 48px; }
+      .temoignages-grille { grid-template-columns: 1fr; }
+      .temoignages-page { padding: 56px 0; }
+      .temoignages-pro { padding: 56px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav" id="nav">
+      <a href="index.html" class="nav__logo"><img src="images/logo Benjamin_21_11zon.jpg" alt="Benjamin Mahieu" width="120" height="52"></a>
+      <ul class="nav__links">
+        <li><a href="diagnostic-modification.html">Modification</a></li>
+        <li><a href="selles-neuves.html">Selles neuves évolutives</a></li>
+        <li><a href="temoignages.html">Témoignages</a></li>
+        <li><a href="contact.html" class="nav__cta">Me contacter</a></li>
+      </ul>
+      <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+    <nav class="nav__mobile" id="mobile-nav">
+      <a href="diagnostic-modification.html">Modification</a>
+      <a href="selles-neuves.html">Selles neuves</a>
+      <a href="temoignages.html">Témoignages</a>
+      <a href="contact.html">Me contacter</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__image"></div>
+      <div class="page-hero__content">
+        <span class="eyebrow" style="color:var(--or-clair)">Retours d'expérience</span>
+        <h1>Ce qu'en disent<br><em>les cavaliers</em></h1>
+        <p>Des témoignages de cavaliers et de professionnels du milieu équestre.</p>
+      </div>
+    </section>
+
+    <section class="temoignages-page reveal">
+      <div class="container">
+        <div class="temoignages-page__header">
+          <span class="eyebrow">Cavaliers & propriétaires</span>
+          <h2>Témoignages clients</h2>
+        </div>
+        <div class="temoignages-grille">
+          <article class="temoignage-card">
+            <div class="temoignage-card__guillemet">"</div>
+            <blockquote class="temoignage-card__texte">Mon cheval était très réticent au montoir depuis plusieurs mois. Après l'intervention de Benjamin, les changements ont été immédiats. Une vraie révélation.</blockquote>
+            <footer><p class="temoignage-card__auteur">Sophie L.</p><p class="temoignage-card__detail">Cavalière amateur — CSO Club</p></footer>
+          </article>
+          <article class="temoignage-card">
+            <div class="temoignage-card__guillemet">"</div>
+            <blockquote class="temoignage-card__texte">Benjamin est venu directement à l'écurie, il a pris le temps d'expliquer chaque point du diagnostic. Sérieux, pédagogue, et surtout réellement objectif.</blockquote>
+            <footer><p class="temoignage-card__auteur">Marie-Claire D.</p><p class="temoignage-card__detail">Propriétaire — Dressage</p></footer>
+          </article>
+          <article class="temoignage-card">
+            <div class="temoignage-card__guillemet">"</div>
+            <blockquote class="temoignage-card__texte">J'ai fait appel à Benjamin lors de l'achat de ma selle. Son regard d'expert m'a évité une erreur coûteuse. Je recommande sans hésiter.</blockquote>
+            <footer><p class="temoignage-card__auteur">Aurélie M.</p><p class="temoignage-card__detail">Cavalière confirmée — Complet</p></footer>
+          </article>
+          <article class="temoignage-card">
+            <div class="temoignage-card__guillemet">"</div>
+            <blockquote class="temoignage-card__texte">Mon cheval boitait légèrement depuis quelques semaines, sans raison apparente. Benjamin a identifié un problème d'équilibre de la selle que personne n'avait vu. Résolu en une intervention.</blockquote>
+            <footer><p class="temoignage-card__auteur">Laurence B.</p><p class="temoignage-card__detail">Propriétaire — Équitation de loisir</p></footer>
+          </article>
+          <article class="temoignage-card">
+            <div class="temoignage-card__guillemet">"</div>
+            <blockquote class="temoignage-card__texte">J'avais une selle que j'adorais mais qui ne convenait plus à mon nouveau cheval. Plutôt que d'en acheter une autre, Benjamin l'a modifiée. Elle est parfaite maintenant.</blockquote>
+            <footer><p class="temoignage-card__auteur">Céline P.</p><p class="temoignage-card__detail">Cavalière — CSO amateur</p></footer>
+          </article>
+          <article class="temoignage-card">
+            <div class="temoignage-card__guillemet">"</div>
+            <blockquote class="temoignage-card__texte">Ce qui m'a frappé chez Benjamin c'est son honnêteté. Il ne vend rien. Il constate, il explique, et il propose uniquement ce qui est utile. C'est rare.</blockquote>
+            <footer><p class="temoignage-card__auteur">Thomas R.</p><p class="temoignage-card__detail">Propriétaire — Saut d'obstacles</p></footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="temoignages-pro reveal">
+      <div class="container">
+        <div class="temoignages-pro__header">
+          <span class="eyebrow">Professionnels du milieu équestre</span>
+          <h2>Ils font confiance à Benjamin</h2>
+          <p>Vétérinaires, ostéopathes, moniteurs — des professionnels qui recommandent Benjamin à leurs clients.</p>
+        </div>
+        <div class="temoignages-pro__liste">
+          <article class="temoignage-pro-card">
+            <blockquote class="temoignage-pro-card__texte">En tant que vétérinaire équin, je rencontre régulièrement des chevaux dont les problèmes locomoteurs sont directement liés à une selle inadaptée. Benjamin est la personne à qui je fais confiance pour ce type d'intervention.</blockquote>
+            <p class="temoignage-pro-card__auteur">Dr. Mathieu V.</p>
+            <p class="temoignage-pro-card__fonction">Vétérinaire équin</p>
+          </article>
+          <article class="temoignage-pro-card">
+            <blockquote class="temoignage-pro-card__texte">Je travaille régulièrement avec Benjamin sur des cas où la selle est en cause dans les douleurs dorsales des chevaux. Son approche est rigoureuse et ses interventions sont efficaces.</blockquote>
+            <p class="temoignage-pro-card__auteur">Isabelle C.</p>
+            <p class="temoignage-pro-card__fonction">Ostéopathe équin</p>
+          </article>
+          <article class="temoignage-pro-card">
+            <blockquote class="temoignage-pro-card__texte">Je conseille systématiquement à mes élèves de faire appel à Benjamin avant d'acheter une selle neuve. Son diagnostic objectif leur évite souvent des erreurs coûteuses.</blockquote>
+            <p class="temoignage-pro-card__auteur">Caroline M.</p>
+            <p class="temoignage-pro-card__fonction">Monitrice d'équitation — BEES 2</p>
+          </article>
+          <article class="temoignage-pro-card">
+            <blockquote class="temoignage-pro-card__texte">Benjamin a une approche rare dans le milieu : il ne vend pas de selles, il diagnostique. Cela lui donne une objectivité que peu de selliers peuvent s'offrir.</blockquote>
+            <p class="temoignage-pro-card__auteur">Pierre-Antoine L.</p>
+            <p class="temoignage-pro-card__fonction">Préparateur physique équestre</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section reveal">
+      <div class="container">
+        <h2>Vous souhaitez prendre rendez-vous ?</h2>
+        <p>Un simple échange permet souvent d'orienter vers la solution la plus adaptée à votre cheval.</p>
+        <a href="contact.html" class="btn-cta">Me contacter <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M9 1l4 4-4 4M1 5h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__logo"><img src="images/logo Benjamin_21_11zon.jpg" alt="Benjamin Mahieu" width="110" height="44"></div>
+          <p class="footer__desc">Diagnostic, modification et adaptation de selles d'équitation. Indépendant, objectif, au service du bien-être de votre cheval.</p>
+        </div>
+        <div>
+          <div class="footer__col-titre">Navigation</div>
+          <ul class="footer__liens">
+            <li><a href="diagnostic-modification.html">Modification</a></li>
+            <li><a href="selles-neuves.html">Selles neuves</a></li>
+            <li><a href="temoignages.html">Témoignages</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-titre">Légal</div>
+          <ul class="footer__liens">
+            <li><a href="cgv-mentions-legales.html">Mentions légales</a></li>
+            <li><a href="cgv-mentions-legales.html">CGV</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bas">
+        <p class="footer__copy">© 2025 Benjamin Mahieu — Tous droits réservés</p>
+        <div class="footer__social"><a href="https://www.facebook.com/Benjamin-MAHIEU-105850464140953/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a></div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+    const burger = document.getElementById('burger'); const mobileNav = document.getElementById('mobile-nav');
+    burger.addEventListener('click', () => { const open = mobileNav.classList.toggle('open'); burger.classList.toggle('open', open); burger.setAttribute('aria-expanded', open); document.body.style.overflow = open ? 'hidden' : ''; });
+    mobileNav.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { mobileNav.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }); });
+    document.querySelectorAll('.reveal').forEach(el => { new IntersectionObserver((e) => { e.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); }); }, { threshold: 0.07 }).observe(el); });
+  </script>
+</body>
+</html>

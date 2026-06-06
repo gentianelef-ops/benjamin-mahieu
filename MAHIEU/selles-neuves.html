@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Selles neuves évolutives Benjamin Mahieu — Gamme mixte et dressage, panneaux sur mesure, arcade interchangeable.">
+  <title>Selles neuves évolutives — Benjamin Mahieu, Artisan sellier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      position: relative; height: 65vh; min-height: 440px;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+    .page-hero__image {
+      position: absolute; inset: 0;
+      background: var(--bleu) url('images/selle-neuve-siege_10_11zon.jpg') center center / cover no-repeat;
+    }
+    .page-hero__image::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(30,60,90,0.2) 0%, rgba(20,45,70,0.75) 100%);
+    }
+    .page-hero__content { position: relative; z-index: 2; padding: 0 40px 64px; animation: fadeUp 0.9s cubic-bezier(0.25,0.46,0.45,0.94) both; }
+    .page-hero__content h1 { font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 4.2rem); font-weight: 300; color: var(--blanc); line-height: 1.05; margin-bottom: 14px; }
+    .page-hero__content h1 em { font-style: italic; color: var(--or-clair); }
+    .page-hero__content p { font-size: 1rem; color: rgba(255,255,255,0.75); max-width: 540px; line-height: 1.7; }
+
+    /* ARGUMENT PRINCIPAL */
+    .argument { background: var(--blanc); padding: 88px 0; }
+    .argument__inner { display: grid; grid-template-columns: 3fr 2fr; gap: 72px; align-items: center; }
+    .argument__texte h2 { font-family: var(--serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 400; color: var(--bleu); line-height: 1.2; margin-bottom: 24px; }
+    .argument__texte p { color: #4a4a4a; line-height: 1.85; font-size: 0.97rem; margin-bottom: 18px; }
+    .argument__encart {
+      background: var(--bleu-section); padding: 40px 32px; color: var(--blanc);
+    }
+    .argument__encart .eyebrow { color: var(--or-clair); }
+    .argument__encart h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; margin-bottom: 16px; }
+    .argument__encart p { font-size: 0.88rem; color: rgba(255,255,255,0.68); line-height: 1.7; }
+
+    /* CARACTERISTIQUES */
+    .caracteristiques { background: var(--ivoire); padding: 88px 0; }
+    .caracteristiques__header { text-align: center; margin-bottom: 60px; }
+    .caracteristiques__header h2 { font-family: var(--serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 400; color: var(--bleu); }
+    .caracteristiques__grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .carac-card { background: var(--blanc); padding: 36px 28px; border-bottom: 2px solid transparent; transition: border-color var(--transition), box-shadow var(--transition); }
+    .carac-card:hover { border-color: var(--or); box-shadow: var(--shadow); }
+    .carac-card__icone { font-family: var(--serif); font-size: 2.8rem; font-weight: 300; color: var(--or); opacity: 0.5; line-height: 1; margin-bottom: 16px; }
+    .carac-card__titre { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; color: var(--bleu); margin-bottom: 10px; }
+    .carac-card__desc { font-size: 0.84rem; color: #5a5a5a; line-height: 1.7; }
+
+    /* GALERIE */
+    .galerie { background: var(--bleu-section); padding: 88px 0; }
+    .galerie__header { text-align: center; margin-bottom: 56px; }
+    .galerie__header .eyebrow { color: var(--or-clair); }
+    .galerie__header h2 { font-family: var(--serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 300; color: var(--blanc); }
+    .galerie__grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+    .galerie__item { overflow: hidden; }
+    .galerie__item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; transition: transform 0.7s ease; display: block; }
+    .galerie__item:hover img { transform: scale(1.04); }
+    .galerie__item--large { grid-column: span 2; }
+    .galerie__item--large img { aspect-ratio: 2/1; }
+
+    /* GAMME */
+    .gamme { background: var(--blanc); padding: 88px 0; }
+    .gamme__header { text-align: center; margin-bottom: 60px; }
+    .gamme__header h2 { font-family: var(--serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 400; color: var(--bleu); }
+    .gamme__grille { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+    .gamme-card { position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--bleu); }
+    .gamme-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.75; transition: transform 0.7s ease; }
+    .gamme-card:hover img { transform: scale(1.04); }
+    .gamme-card__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(20,45,70,0.88) 0%, rgba(20,45,70,0.1) 55%);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 36px 32px;
+    }
+    .gamme-card__label { font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--or-clair); margin-bottom: 8px; }
+    .gamme-card__titre { font-family: var(--serif); font-size: 1.8rem; font-weight: 400; color: var(--blanc); margin-bottom: 10px; }
+    .gamme-card__desc { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+    /* CTA */
+    .cta-section { background: var(--ivoire-fonce); padding: 72px 0; text-align: center; }
+    .cta-section h2 { font-family: var(--serif); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 400; color: var(--bleu); margin-bottom: 16px; }
+    .cta-section p { font-size: 0.97rem; color: #5a5a5a; margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .btn-cta { display: inline-flex; align-items: center; gap: 12px; font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blanc); background: var(--bleu); padding: 15px 36px; transition: background var(--transition); }
+    .btn-cta:hover { background: var(--bleu-fonce); }
+
+    @media (max-width: 1024px) {
+      .argument__inner { grid-template-columns: 1fr; gap: 44px; }
+      .caracteristiques__grille { grid-template-columns: 1fr 1fr; }
+      .gamme__grille { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .page-hero__content { padding: 0 20px 48px; }
+      .caracteristiques__grille { grid-template-columns: 1fr; }
+      .galerie__grille { grid-template-columns: 1fr 1fr; }
+      .galerie__item--large { grid-column: span 2; }
+      .argument { padding: 56px 0; } .caracteristiques { padding: 56px 0; }
+      .galerie { padding: 56px 0; } .gamme { padding: 56px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav" id="nav">
+      <a href="index.html" class="nav__logo"><img src="images/logo Benjamin_21_11zon.jpg" alt="Benjamin Mahieu" width="120" height="52"></a>
+      <ul class="nav__links">
+        <li><a href="diagnostic-modification.html">Modification</a></li>
+        <li><a href="selles-neuves.html">Selles neuves évolutives</a></li>
+        <li><a href="temoignages.html">Témoignages</a></li>
+        <li><a href="contact.html" class="nav__cta">Me contacter</a></li>
+      </ul>
+      <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+    <nav class="nav__mobile" id="mobile-nav">
+      <a href="diagnostic-modification.html">Modification</a>
+      <a href="selles-neuves.html">Selles neuves</a>
+      <a href="temoignages.html">Témoignages</a>
+      <a href="contact.html">Me contacter</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__image"></div>
+      <div class="page-hero__content">
+        <span class="eyebrow" style="color:var(--or-clair)">Gamme Benjamin Mahieu</span>
+        <h1>Selles neuves<br><em>évolutives</em></h1>
+        <p>Conçues pour s'adapter à la morphologie de votre cheval et évoluer avec lui dans le temps.</p>
+      </div>
+    </section>
+
+    <section class="argument reveal">
+      <div class="container">
+        <div class="argument__inner">
+          <div class="argument__texte">
+            <span class="eyebrow">L'argument principal</span>
+            <h2>Une selle qui évolue avec votre cheval</h2>
+            <p>La grande majorité des selles du marché sont figées dans leur forme. Dès que la morphologie de votre cheval change — et elle change — la selle ne convient plus.</p>
+            <p>Benjamin a conçu sa propre gamme de selles en partant de ce constat. Ses selles évolutives sont pensées dès la conception pour pouvoir être adaptées à tout moment, sans compromettre la qualité du matériau ni la durée de vie de la selle.</p>
+            <p>Les panneaux sont fabriqués sur mesure, l'arcade est interchangeable, et Benjamin réalise lui-même toutes les adaptations nécessaires au fil du temps.</p>
+          </div>
+          <div class="argument__encart">
+            <span class="eyebrow">Le principe</span>
+            <h3>Évolutive par conception</h3>
+            <p>Panneaux fabriqués sur mesure selon la morphologie de votre cheval. Arcade interchangeable selon l'évolution du garrot. Toutes les adaptations futures réalisées par Benjamin lui-même.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="caracteristiques reveal">
+      <div class="container">
+        <div class="caracteristiques__header">
+          <span class="eyebrow">Ce qui les différencie</span>
+          <h2>Les caractéristiques de la gamme</h2>
+        </div>
+        <div class="caracteristiques__grille">
+          <div class="carac-card">
+            <div class="carac-card__icone">✦</div>
+            <h3 class="carac-card__titre">Panneaux sur mesure</h3>
+            <p class="carac-card__desc">Fabriqués selon la morphologie exacte de votre cheval au moment de la commande, pour un contact parfait dès le premier jour.</p>
+          </div>
+          <div class="carac-card">
+            <div class="carac-card__icone">✦</div>
+            <h3 class="carac-card__titre">Arcade interchangeable</h3>
+            <p class="carac-card__desc">Le système d'arcade peut être remplacé sans intervention majeure, pour s'adapter à l'évolution du garrot de votre cheval.</p>
+          </div>
+          <div class="carac-card">
+            <div class="carac-card__icone">✦</div>
+            <h3 class="carac-card__titre">Suivi dans le temps</h3>
+            <p class="carac-card__desc">Benjamin assure le suivi et les adaptations nécessaires au fil du temps. Votre selle évolue avec votre cheval, pas l'inverse.</p>
+          </div>
+          <div class="carac-card">
+            <div class="carac-card__icone">✦</div>
+            <h3 class="carac-card__titre">Cuirs sélectionnés</h3>
+            <p class="carac-card__desc">Des matériaux de qualité, choisis pour leur durabilité, leur souplesse et leur compatibilité avec une selle de travail quotidien.</p>
+          </div>
+          <div class="carac-card">
+            <div class="carac-card__icone">✦</div>
+            <h3 class="carac-card__titre">Fabrication artisanale</h3>
+            <p class="carac-card__desc">Chaque selle est réalisée à la main selon les techniques de sellerie traditionnelle, héritées des plus grands maîtres selliers.</p>
+          </div>
+          <div class="carac-card">
+            <div class="carac-card__icone">✦</div>
+            <h3 class="carac-card__titre">Diagnostic inclus</h3>
+            <p class="carac-card__desc">L'acquisition d'une selle neuve comprend un diagnostic complet sur votre cheval pour garantir un ajustement parfait dès la livraison.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="galerie reveal">
+      <div class="container">
+        <div class="galerie__header">
+          <span class="eyebrow">La gamme en images</span>
+          <h2>Détails & finitions</h2>
+        </div>
+        <div class="galerie__grille">
+          <div class="galerie__item galerie__item--large">
+            <img src="images/selle-dos-cheval_8_11zon.jpg" alt="Selle posée sur le dos du cheval" loading="lazy">
+          </div>
+          <div class="galerie__item">
+            <img src="images/detail-cuir-selle-artisanale.jpg" alt="Détail cuir selle artisanale" loading="lazy">
+          </div>
+          <div class="galerie__item">
+            <img src="images/selle-neuve_5_11zon.jpg" alt="Selle neuve Benjamin Mahieu" loading="lazy">
+          </div>
+          <div class="galerie__item">
+            <img src="images/selle-neuve_6_11zon.jpg" alt="Selle neuve Benjamin Mahieu" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gamme reveal">
+      <div class="container">
+        <div class="gamme__header">
+          <span class="eyebrow">Deux disciplines</span>
+          <h2>Mixte & Dressage</h2>
+        </div>
+        <div class="gamme__grille">
+          <div class="gamme-card">
+            <img src="images/selle-neuve-siege_10_11zon.jpg" alt="Selle mixte Benjamin Mahieu" loading="lazy">
+            <div class="gamme-card__overlay">
+              <span class="gamme-card__label">Gamme 01</span>
+              <h3 class="gamme-card__titre">Selle mixte</h3>
+              <p class="gamme-card__desc">Polyvalente, conçue pour le travail quotidien et les cavaliers pratiquant plusieurs disciplines.</p>
+            </div>
+          </div>
+          <div class="gamme-card">
+            <img src="images/selle-dressage-1_9_11zon.jpg" alt="Selle dressage Benjamin Mahieu" loading="lazy">
+            <div class="gamme-card__overlay">
+              <span class="gamme-card__label">Gamme 02</span>
+              <h3 class="gamme-card__titre">Selle dressage</h3>
+              <p class="gamme-card__desc">Spécialement conçue pour le dressage, avec une assise profonde favorisant la communication entre le cavalier et son cheval.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section reveal">
+      <div class="container">
+        <h2>Vous souhaitez en savoir plus sur la gamme ?</h2>
+        <p>Contactez Benjamin pour discuter de votre projet. Chaque selle est pensée sur mesure, un échange est toujours le point de départ.</p>
+        <a href="contact.html" class="btn-cta">
+          Me contacter
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M9 1l4 4-4 4M1 5h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__logo"><img src="images/logo Benjamin_21_11zon.jpg" alt="Benjamin Mahieu" width="110" height="44"></div>
+          <p class="footer__desc">Diagnostic, modification et adaptation de selles d'équitation. Indépendant, objectif, au service du bien-être de votre cheval.</p>
+        </div>
+        <div>
+          <div class="footer__col-titre">Navigation</div>
+          <ul class="footer__liens">
+            <li><a href="diagnostic-modification.html">Modification</a></li>
+            <li><a href="selles-neuves.html">Selles neuves</a></li>
+            <li><a href="temoignages.html">Témoignages</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-titre">Légal</div>
+          <ul class="footer__liens">
+            <li><a href="cgv-mentions-legales.html">Mentions légales</a></li>
+            <li><a href="cgv-mentions-legales.html">CGV</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bas">
+        <p class="footer__copy">© 2025 Benjamin Mahieu — Tous droits réservés</p>
+        <div class="footer__social"><a href="https://www.facebook.com/Benjamin-MAHIEU-105850464140953/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a></div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+    const burger = document.getElementById('burger'); const mobileNav = document.getElementById('mobile-nav');
+    burger.addEventListener('click', () => { const open = mobileNav.classList.toggle('open'); burger.classList.toggle('open', open); burger.setAttribute('aria-expanded', open); document.body.style.overflow = open ? 'hidden' : ''; });
+    mobileNav.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { mobileNav.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }); });
+    document.querySelectorAll('.reveal').forEach(el => { new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } }); }, { threshold: 0.07 }).observe(el); });
+  </script>
+</body>
+</html>

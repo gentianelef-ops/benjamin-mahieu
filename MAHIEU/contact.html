@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contacter Benjamin Mahieu — Artisan sellier, diagnostic et modification de selles d'équitation.">
+  <title>Contact — Benjamin Mahieu, Artisan sellier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      position: relative; height: 55vh; min-height: 380px;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+    .page-hero__image {
+      position: absolute; inset: 0;
+      background: var(--bleu) url('images/contact.jpg') center center / cover no-repeat;
+    }
+    .page-hero__image::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(30,60,90,0.25) 0%, rgba(20,45,70,0.8) 100%);
+    }
+    .page-hero__content { position: relative; z-index: 2; padding: 0 40px 60px; animation: fadeUp 0.9s cubic-bezier(0.25,0.46,0.45,0.94) both; }
+    .page-hero__content h1 { font-family: var(--serif); font-size: clamp(2.2rem, 4.5vw, 3.8rem); font-weight: 300; color: var(--blanc); line-height: 1.05; margin-bottom: 14px; }
+    .page-hero__content h1 em { font-style: italic; color: var(--or-clair); }
+
+    /* CONTACT PRINCIPAL */
+    .contact-page { background: var(--blanc); padding: 96px 0; }
+    .contact-page__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .contact-page__texte h2 { font-family: var(--serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 400; color: var(--bleu); line-height: 1.2; margin-bottom: 20px; }
+    .contact-page__texte p { font-size: 0.97rem; color: #4a4a4a; line-height: 1.85; margin-bottom: 16px; }
+    .contact-page__texte p em { font-family: var(--serif); font-style: italic; color: #3a3a3a; }
+    .contact-page__coords { margin-top: 40px; display: flex; flex-direction: column; gap: 16px; }
+    .coord-ligne {
+      display: flex; align-items: center; gap: 18px;
+      padding: 20px 24px; border: 1px solid var(--ivoire-fonce);
+      transition: border-color var(--transition), background var(--transition);
+      color: var(--bleu); font-size: 1rem;
+    }
+    .coord-ligne:hover { border-color: var(--or); background: var(--ivoire); }
+    .coord-ligne__icone { color: var(--or); flex-shrink: 0; }
+    .coord-ligne__label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gris); display: block; margin-bottom: 2px; }
+    .coord-ligne__valeur { font-size: 0.97rem; color: var(--bleu); }
+
+    /* CARTE / ZONE */
+    .zone-intervention { background: var(--ivoire); padding: 88px 0; }
+    .zone-intervention__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .zone-intervention__texte h2 { font-family: var(--serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 400; color: var(--bleu); margin-bottom: 20px; }
+    .zone-intervention__texte p { color: #4a4a4a; line-height: 1.85; font-size: 0.97rem; margin-bottom: 16px; }
+    .zone-map {
+      background: var(--bleu-pale); aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .zone-map img { width: 100%; height: 100%; object-fit: cover; }
+    .zone-map__fallback {
+      text-align: center; padding: 40px;
+    }
+    .zone-map__fallback p { font-family: var(--serif); font-size: 1.1rem; color: var(--bleu); font-style: italic; }
+
+    /* CONTACT IMAGE */
+    .contact-image { background: var(--bleu-section); padding: 0; overflow: hidden; }
+    .contact-image img { width: 100%; max-height: 480px; object-fit: cover; object-position: center 40%; display: block; opacity: 0.85; }
+
+    @media (max-width: 1024px) {
+      .contact-page__inner { grid-template-columns: 1fr; gap: 48px; }
+      .zone-intervention__inner { grid-template-columns: 1fr; gap: 44px; }
+    }
+    @media (max-width: 768px) {
+      .page-hero__content { padding: 0 20px 48px; }
+      .contact-page { padding: 60px 0; }
+      .zone-intervention { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav" id="nav">
+      <a href="index.html" class="nav__logo"><img src="images/logo Benjamin_21_11zon.jpg" alt="Benjamin Mahieu" width="120" height="52"></a>
+      <ul class="nav__links">
+        <li><a href="diagnostic-modification.html">Modification</a></li>
+        <li><a href="selles-neuves.html">Selles neuves évolutives</a></li>
+        <li><a href="temoignages.html">Témoignages</a></li>
+        <li><a href="contact.html" class="nav__cta">Me contacter</a></li>
+      </ul>
+      <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+    <nav class="nav__mobile" id="mobile-nav">
+      <a href="diagnostic-modification.html">Modification</a>
+      <a href="selles-neuves.html">Selles neuves</a>
+      <a href="temoignages.html">Témoignages</a>
+      <a href="contact.html">Me contacter</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__image"></div>
+      <div class="page-hero__content">
+        <span class="eyebrow" style="color:var(--or-clair)">Parlons-en</span>
+        <h1>Me<br><em>contacter</em></h1>
+      </div>
+    </section>
+
+    <section class="contact-page reveal">
+      <div class="container">
+        <div class="contact-page__inner">
+          <div class="contact-page__texte">
+            <span class="eyebrow">Un doute sur votre selle ?</span>
+            <h2>Un simple échange suffit souvent</h2>
+            <p><em>N'hésitez pas à me contacter pour en discuter. Chaque cheval est différent. Un simple échange permet souvent d'orienter vers la solution la plus adaptée.</em></p>
+            <p>Benjamin se déplace directement dans votre écurie. Il intervient dans un rayon adapté autour de sa zone principale — n'hésitez pas à lui demander si votre secteur est couvert.</p>
+            <p>Pour toute demande de diagnostic, modification, ou renseignement sur la gamme de selles neuves, vous pouvez le joindre par téléphone ou par email.</p>
+            <div class="contact-page__coords">
+              <a href="tel:0646645363" class="coord-ligne">
+                <span class="coord-ligne__icone">
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <path d="M19 16c0 .4-.1.8-.3 1.2s-.4.7-.7 1c-.5.5-1.1.8-1.7.8-.5 0-1-.1-1.5-.4-.6-.3-1.1-.6-1.6-.9a22 22 0 01-1.5-1.3 22 22 0 01-1.3-1.5c-.4-.5-.7-1-.9-1.6-.3-.5-.4-1-.4-1.5 0-.6.2-1.1.7-1.6.4-.4.8-.7 1.3-.7.2 0 .3 0 .5.1.2.1.3.2.5.5l1.5 2.1c.1.2.3.4.3.6 0 .1 0 .3-.1.5-.1.1-.2.3-.4.5l-.5.5c.1.1.2.3.3.4l1.4 1.4.4.3.4-.4c.2-.2.4-.3.5-.4.2-.1.3-.2.5-.2.2 0 .4.1.6.3l2.1 1.5c.2.1.4.3.5.5v.5z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div>
+                  <span class="coord-ligne__label">Téléphone</span>
+                  <span class="coord-ligne__valeur">06 46 64 53 63</span>
+                </div>
+              </a>
+              <a href="mailto:benjamin.mahieu.dma@gmail.com" class="coord-ligne">
+                <span class="coord-ligne__icone">
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <rect x="2" y="5" width="18" height="12" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+                    <path d="M2 7.5l9 6 9-6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <div>
+                  <span class="coord-ligne__label">Email</span>
+                  <span class="coord-ligne__valeur">benjamin.mahieu.dma@gmail.com</span>
+                </div>
+              </a>
+              <a href="https://www.facebook.com/Benjamin-MAHIEU-105850464140953/" target="_blank" rel="noopener noreferrer" class="coord-ligne">
+                <span class="coord-ligne__icone">
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <rect x="2" y="2" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.3"/>
+                    <path d="M13 8h-1.5A.5.5 0 0011 8.5V10h2l-.3 2H11v5H9v-5H7.5v-2H9V8.5A2.5 2.5 0 0111.5 6H13v2z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div>
+                  <span class="coord-ligne__label">Facebook</span>
+                  <span class="coord-ligne__valeur">Benjamin Mahieu</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <img src="images/benjamin-mahieu-selle-neuve.jpg" alt="Benjamin Mahieu, artisan sellier" loading="lazy" style="width:100%; aspect-ratio:4/5; object-fit:cover;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="zone-intervention reveal">
+      <div class="container">
+        <div class="zone-intervention__inner">
+          <div class="zone-intervention__texte">
+            <span class="eyebrow">Zone d'intervention</span>
+            <h2>Benjamin se déplace dans votre écurie</h2>
+            <p>Toutes les interventions se font directement sur place, dans les conditions habituelles de votre cheval. Benjamin ne travaille pas en atelier de dépôt — le diagnostic et l'ajustement se font toujours avec le cheval présent.</p>
+            <p>Sa zone d'intervention principale couvre le Nord et les départements limitrophes. Pour les demandes hors zone, n'hésitez pas à le contacter directement — des déplacements ponctuels plus lointains sont parfois possibles.</p>
+          </div>
+          <div class="zone-map">
+            <div class="zone-map__fallback">
+              <p>Zone d'intervention :<br>Nord · Pas-de-Calais<br>et départements limitrophes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__logo"><img src="images/logo Benjamin_21_11zon.jpg" alt="Benjamin Mahieu" width="110" height="44"></div>
+          <p class="footer__desc">Diagnostic, modification et adaptation de selles d'équitation. Indépendant, objectif, au service du bien-être de votre cheval.</p>
+        </div>
+        <div>
+          <div class="footer__col-titre">Navigation</div>
+          <ul class="footer__liens">
+            <li><a href="diagnostic-modification.html">Modification</a></li>
+            <li><a href="selles-neuves.html">Selles neuves</a></li>
+            <li><a href="temoignages.html">Témoignages</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-titre">Légal</div>
+          <ul class="footer__liens">
+            <li><a href="cgv-mentions-legales.html">Mentions légales</a></li>
+            <li><a href="cgv-mentions-legales.html">CGV</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bas">
+        <p class="footer__copy">© 2025 Benjamin Mahieu — Tous droits réservés</p>
+        <div class="footer__social"><a href="https://www.facebook.com/Benjamin-MAHIEU-105850464140953/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a></div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+    const burger = document.getElementById('burger'); const mobileNav = document.getElementById('mobile-nav');
+    burger.addEventListener('click', () => { const open = mobileNav.classList.toggle('open'); burger.classList.toggle('open', open); burger.setAttribute('aria-expanded', open); document.body.style.overflow = open ? 'hidden' : ''; });
+    mobileNav.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { mobileNav.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }); });
+    document.querySelectorAll('.reveal').forEach(el => { new IntersectionObserver((e) => { e.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); }); }, { threshold: 0.07 }).observe(el); });
+  </script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Benjamin Mahieu — Modification et adaptation de selles d'équitation. Diagnostic complet, modification des panneaux, travail artisanal.">
+  <title>Modification & Diagnostic — Benjamin Mahieu, Artisan sellier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* PAGE HERO */
+    .page-hero {
+      position: relative; height: 60vh; min-height: 420px;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+    .page-hero__image {
+      position: absolute; inset: 0;
+      background: var(--bleu) url('images/travail-atelier-selle_7_11zon.jpg') center center / cover no-repeat;
+    }
+    .page-hero__image::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(30,60,90,0.2) 0%, rgba(20,45,70,0.72) 100%);
+    }
+    .page-hero__content {
+      position: relative; z-index: 2; padding: 0 40px 64px;
+      animation: fadeUp 0.9s cubic-bezier(0.25,0.46,0.45,0.94) both;
+    }
+    .page-hero__content h1 {
+      font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 300; color: var(--blanc); line-height: 1.05; margin-bottom: 14px;
+    }
+    .page-hero__content h1 em { font-style: italic; color: var(--or-clair); }
+    .page-hero__content p { font-size: 1rem; color: rgba(255,255,255,0.75); max-width: 540px; line-height: 1.7; }
+
+    /* INTRO */
+    .intro { background: var(--blanc); padding: 88px 0; }
+    .intro__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .intro__texte h2 { font-family: var(--serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 400; color: var(--bleu); line-height: 1.2; margin-bottom: 24px; }
+    .intro__texte p { color: #4a4a4a; line-height: 1.85; font-size: 0.97rem; margin-bottom: 18px; }
+    .intro__image img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+
+    /* PROCESSUS */
+    .processus { background: var(--ivoire); padding: 88px 0; }
+    .processus__header { text-align: center; margin-bottom: 64px; }
+    .processus__header h2 { font-family: var(--serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 400; color: var(--bleu); }
+    .processus__etapes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .etape {
+      background: var(--blanc); padding: 36px 28px; position: relative;
+      border-bottom: 2px solid transparent; transition: border-color var(--transition);
+    }
+    .etape:hover { border-color: var(--or); }
+    .etape__num { font-family: var(--serif); font-size: 3rem; font-weight: 300; color: rgba(184,151,90,0.18); line-height: 1; margin-bottom: 16px; }
+    .etape__titre { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; color: var(--bleu); margin-bottom: 10px; }
+    .etape__desc { font-size: 0.84rem; color: #5a5a5a; line-height: 1.7; }
+
+    /* AVANT APRES */
+    .avant-apres { background: var(--bleu-section); padding: 88px 0; }
+    .avant-apres__header { text-align: center; margin-bottom: 60px; }
+    .avant-apres__header .eyebrow { color: var(--or-clair); }
+    .avant-apres__header h2 { font-family: var(--serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 300; color: var(--blanc); }
+    .avant-apres__grille { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3px; }
+    .avant-apres-card { position: relative; overflow: hidden; }
+    .avant-apres-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.7s ease; }
+    .avant-apres-card:hover img { transform: scale(1.03); }
+    .avant-apres-card__label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(20,45,70,0.85) 0%, transparent 100%);
+      padding: 24px 20px 18px;
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--or-clair);
+    }
+
+    /* SAVOIR FAIRE */
+    .savoir-faire { background: var(--blanc); padding: 88px 0; }
+    .savoir-faire__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .savoir-faire__images { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+    .savoir-faire__images img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+    .savoir-faire__texte h2 { font-family: var(--serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 400; color: var(--bleu); line-height: 1.2; margin-bottom: 24px; }
+    .savoir-faire__texte p { color: #4a4a4a; line-height: 1.85; font-size: 0.97rem; margin-bottom: 18px; }
+    .savoir-faire__liste { list-style: none; margin-top: 20px; }
+    .savoir-faire__liste li { display: flex; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--ivoire-fonce); font-size: 0.92rem; color: #3a3a3a; }
+    .savoir-faire__liste li::before { content: '—'; color: var(--or); flex-shrink: 0; }
+
+    /* CTA */
+    .cta-section { background: var(--ivoire-fonce); padding: 72px 0; text-align: center; }
+    .cta-section h2 { font-family: var(--serif); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 400; color: var(--bleu); margin-bottom: 16px; }
+    .cta-section p { font-size: 0.97rem; color: #5a5a5a; margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--blanc); background: var(--bleu); padding: 15px 36px;
+      transition: background var(--transition);
+    }
+    .btn-cta:hover { background: var(--bleu-fonce); }
+
+    @media (max-width: 1024px) {
+      .intro__inner { grid-template-columns: 1fr; gap: 44px; }
+      .savoir-faire__inner { grid-template-columns: 1fr; gap: 44px; }
+      .processus__etapes { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .page-hero__content { padding: 0 20px 48px; }
+      .avant-apres__grille { grid-template-columns: 1fr; }
+      .processus__etapes { grid-template-columns: 1fr; }
+      .savoir-faire__images { grid-template-columns: 1fr 1fr; }
+      .intro { padding: 56px 0; }
+      .processus { padding: 56px 0; }
+      .avant-apres { padding: 56px 0; }
+      .savoir-faire { padding: 56px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav" id="nav">
+      <a href="index.html" class="nav__logo"><img src="images/logo Benjamin_21_11zon.jpg" alt="Benjamin Mahieu" width="120" height="52"></a>
+      <ul class="nav__links">
+        <li><a href="diagnostic-modification.html">Modification</a></li>
+        <li><a href="selles-neuves.html">Selles neuves évolutives</a></li>
+        <li><a href="temoignages.html">Témoignages</a></li>
+        <li><a href="contact.html" class="nav__cta">Me contacter</a></li>
+      </ul>
+      <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+    <nav class="nav__mobile" id="mobile-nav">
+      <a href="diagnostic-modification.html">Modification</a>
+      <a href="selles-neuves.html">Selles neuves</a>
+      <a href="temoignages.html">Témoignages</a>
+      <a href="contact.html">Me contacter</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__image"></div>
+      <div class="page-hero__content">
+        <span class="eyebrow" style="color:var(--or-clair)">Savoir-faire artisanal</span>
+        <h1>Modification<br><em>& adaptation de selle</em></h1>
+        <p>Chaque intervention est unique, réalisée à la main dans l'atelier, adaptée à la morphologie de votre cheval.</p>
+      </div>
+    </section>
+
+    <section class="intro reveal">
+      <div class="container">
+        <div class="intro__inner">
+          <div class="intro__texte">
+            <span class="eyebrow">Pourquoi modifier sa selle ?</span>
+            <h2>Une selle qui s'adapte au cheval, pas l'inverse</h2>
+            <p>La morphologie d'un cheval évolue constamment — avec l'âge, le travail, la musculature. Une selle parfaitement ajustée un jour peut devenir inadaptée quelques mois plus tard.</p>
+            <p>La modification de selle permet de corriger l'adéquation entre votre matériel existant et la morphologie actuelle de votre cheval, sans nécessairement investir dans une selle neuve.</p>
+            <p>Benjamin intervient directement dans son atelier, à la main, avec les techniques de sellerie traditionnelle transmises par les plus grands maîtres selliers.</p>
+          </div>
+          <div class="intro__image">
+            <img src="images/palpation-cheval-diagnostic_2_11zon.jpg" alt="Diagnostic de selle sur cheval" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="processus reveal">
+      <div class="container">
+        <div class="processus__header">
+          <span class="eyebrow">Déroulement</span>
+          <h2>Les étapes d'une intervention</h2>
+        </div>
+        <div class="processus__etapes">
+          <div class="etape">
+            <div class="etape__num">01</div>
+            <h3 class="etape__titre">Diagnostic sur place</h3>
+            <p class="etape__desc">Benjamin se déplace dans votre écurie pour évaluer l'adéquation entre votre selle et votre cheval.</p>
+          </div>
+          <div class="etape">
+            <div class="etape__num">02</div>
+            <h3 class="etape__titre">Analyse & devis</h3>
+            <p class="etape__desc">Il identifie les points à corriger et vous propose les modifications adaptées avec un devis clair.</p>
+          </div>
+          <div class="etape">
+            <div class="etape__num">03</div>
+            <h3 class="etape__titre">Travail en atelier</h3>
+            <p class="etape__desc">La selle est prise en charge et modifiée à la main dans l'atelier, avec les matériaux appropriés.</p>
+          </div>
+          <div class="etape">
+            <div class="etape__num">04</div>
+            <h3 class="etape__titre">Vérification finale</h3>
+            <p class="etape__desc">La selle modifiée est replacée sur votre cheval pour vérifier le résultat et s'assurer du bon ajustement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="avant-apres reveal">
+      <div class="container">
+        <div class="avant-apres__header">
+          <span class="eyebrow">Résultats concrets</span>
+          <h2>Avant / Après</h2>
+        </div>
+        <div class="avant-apres__grille">
+          <div class="avant-apres-card">
+            <img src="images/avant-1.jpg" alt="Modification de selle — avant après" loading="lazy">
+            <div class="avant-apres-card__label">Intervention panneaux</div>
+          </div>
+          <div class="avant-apres-card">
+            <img src="images/Avant2.jpg" alt="Modification de selle — avant après" loading="lazy">
+            <div class="avant-apres-card__label">Adaptation morphologique</div>
+          </div>
+          <div class="avant-apres-card">
+            <img src="images/Avant-3.jpg" alt="Modification de selle — avant après" loading="lazy">
+            <div class="avant-apres-card__label">Rééquilibrage selle</div>
+          </div>
+          <div class="avant-apres-card">
+            <img src="images/Avant-4.jpg" alt="Modification de selle — avant après" loading="lazy">
+            <div class="avant-apres-card__label">Correction garrot</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="savoir-faire reveal">
+      <div class="container">
+        <div class="savoir-faire__inner">
+          <div class="savoir-faire__images">
+            <img src="images/travail-cuir-atelier_1_11zon.jpg" alt="Travail du cuir en atelier" loading="lazy">
+            <img src="images/couture-cuir-artisanale.jpg" alt="Couture cuir artisanale" loading="lazy">
+            <img src="images/detail-cuir-selle-artisanale.jpg" alt="Détail cuir selle artisanale" loading="lazy">
+            <img src="images/diagnostic.jpg" alt="Diagnostic selle" loading="lazy">
+          </div>
+          <div class="savoir-faire__texte">
+            <span class="eyebrow">Le savoir-faire</span>
+            <h2>Un travail artisanal, réalisé à la main</h2>
+            <p>Formé par Jean-Luc Parisot, l'un des meilleurs Maîtres Selliers du monde, Benjamin maîtrise les techniques de sellerie traditionnelle dans leur intégralité.</p>
+            <p>Chaque modification est réalisée avec des matériaux de qualité, sélectionnés pour leur durabilité et leur compatibilité avec votre selle existante.</p>
+            <ul class="savoir-faire__liste">
+              <li>Modification et refection des panneaux</li>
+              <li>Réglage de l'arcade</li>
+              <li>Correction de l'équilibre et de l'assiette</li>
+              <li>Travail du cuir et des finitions</li>
+              <li>Rembourrage et garnissage sur mesure</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section reveal">
+      <div class="container">
+        <h2>Votre selle nécessite une modification ?</h2>
+        <p>Contactez Benjamin pour discuter de votre situation. Un simple échange suffit souvent à orienter vers la bonne solution.</p>
+        <a href="contact.html" class="btn-cta">
+          Me contacter
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M9 1l4 4-4 4M1 5h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__logo"><img src="images/logo Benjamin_21_11zon.jpg" alt="Benjamin Mahieu" width="110" height="44"></div>
+          <p class="footer__desc">Diagnostic, modification et adaptation de selles d'équitation. Indépendant, objectif, au service du bien-être de votre cheval.</p>
+        </div>
+        <div>
+          <div class="footer__col-titre">Navigation</div>
+          <ul class="footer__liens">
+            <li><a href="diagnostic-modification.html">Modification</a></li>
+            <li><a href="selles-neuves.html">Selles neuves</a></li>
+            <li><a href="temoignages.html">Témoignages</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-titre">Légal</div>
+          <ul class="footer__liens">
+            <li><a href="cgv-mentions-legales.html">Mentions légales</a></li>
+            <li><a href="cgv-mentions-legales.html">CGV</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bas">
+        <p class="footer__copy">© 2025 Benjamin Mahieu — Tous droits réservés</p>
+        <div class="footer__social"><a href="https://www.facebook.com/Benjamin-MAHIEU-105850464140953/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobile-nav');
+    burger.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open'); burger.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '';
+      });
+    });
+    const reveals = document.querySelectorAll('.reveal');
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.07 }).observe ? document.querySelectorAll('.reveal').forEach(el => {
+      new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+      }, { threshold: 0.07 }).observe(el);
+    }) : reveals.forEach(el => el.classList.add('visible'));
+  </script>
+</body>
+</html>
