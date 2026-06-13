@@ -3,108 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Selles neuves évolutives Benjamin Mahieu — Gamme mixte et dressage, panneaux sur mesure, arcade interchangeable.">
-  <title>Selles neuves évolutives — Benjamin Mahieu, Artisan sellier</title>
+  <title>Selles neuves évolutives — Benjamin Mahieu, Artisan d'art sellier</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    .page-hero {
-      position: relative; height: 65vh; min-height: 440px;
-      display: flex; align-items: flex-end; overflow: hidden;
-    }
-    .page-hero__image {
-      position: absolute; inset: 0;
-      background: var(--bleu) url('images/selle-neuve-siege_10_11zon.jpg') center center / cover no-repeat;
-    }
-    .page-hero__image::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(160deg, rgba(30,60,90,0.2) 0%, rgba(20,45,70,0.75) 100%);
-    }
-    .page-hero__content { position: relative; z-index: 2; padding: 0 40px 64px; animation: fadeUp 0.9s cubic-bezier(0.25,0.46,0.45,0.94) both; }
-    .page-hero__content h1 { font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 4.2rem); font-weight: 300; color: var(--blanc); line-height: 1.05; margin-bottom: 14px; }
-    .page-hero__content h1 em { font-style: italic; color: var(--or-clair); }
-    .page-hero__content p { font-size: 1rem; color: rgba(255,255,255,0.75); max-width: 540px; line-height: 1.7; }
+    :root{--bleu:#3d6b8e;--bleu-nav:rgba(52,91,120,0.97);--bleu-fonce:#2a5070;--bleu-section:#3d6b8e;--bleu-pale:#e8f0f6;--ivoire:#f7f4ef;--ivoire-fonce:#ede9e1;--or:#b8975a;--or-clair:#d4b07a;--gris:#8a8a8a;--texte:#1a1a1a;--blanc:#ffffff;--footer-bg:#0d1e2e;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;--shadow:0 4px 32px rgba(30,58,95,0.10);--transition:0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}body{font-family:var(--sans);color:var(--texte);background:var(--ivoire);line-height:1.6;-webkit-font-smoothing:antialiased;}
+    img{display:block;max-width:100%;}a{color:inherit;text-decoration:none;}
+    .container{max-width:1200px;margin:0 auto;padding:0 40px;}
+    .eyebrow{display:block;font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--or);margin-bottom:16px;}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;transition:background var(--transition),padding var(--transition),box-shadow var(--transition);}
+    .nav.scrolled{background:var(--bleu-nav);padding:12px 40px;box-shadow:0 2px 20px rgba(0,0,0,0.15);backdrop-filter:blur(8px);}
+    .nav__logo img{height:64px;width:auto;transition:filter var(--transition);}
+    .nav.scrolled .nav__logo img{filter:brightness(0) invert(1);}
+    .nav__links{display:flex;align-items:center;gap:36px;list-style:none;}
+    .nav__links a{font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--blanc);font-weight:400;position:relative;padding-bottom:3px;text-shadow:0 1px 4px rgba(0,0,0,0.4);}
+    .nav__links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--or-clair);transition:width var(--transition);}
+    .nav__links a:hover::after{width:100%;}
+    .nav__cta{border:1px solid rgba(255,255,255,0.6)!important;padding:9px 20px;}
+    .nav__cta::after{display:none!important;}
+    .nav__burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+    .nav__burger span{display:block;width:26px;height:1.5px;background:var(--blanc);transition:transform var(--transition),opacity var(--transition);}
+    .nav__burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+    .nav__burger.open span:nth-child(2){opacity:0;}
+    .nav__burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+    .nav__mobile{display:none;position:fixed;inset:0;background:var(--bleu-fonce);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:40px;}
+    .nav__mobile.open{display:flex;}
+    .nav__mobile a{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--blanc);}
+    .nav__mobile a:hover{color:var(--or-clair);}
 
-    /* ARGUMENT PRINCIPAL */
-    .argument { background: var(--blanc); padding: 88px 0; }
-    .argument__inner { display: grid; grid-template-columns: 3fr 2fr; gap: 72px; align-items: center; }
-    .argument__texte h2 { font-family: var(--serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 400; color: var(--bleu); line-height: 1.2; margin-bottom: 24px; }
-    .argument__texte p { color: #4a4a4a; line-height: 1.85; font-size: 0.97rem; margin-bottom: 18px; }
-    .argument__encart {
-      background: var(--bleu-section); padding: 40px 32px; color: var(--blanc);
-    }
-    .argument__encart .eyebrow { color: var(--or-clair); }
-    .argument__encart h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; margin-bottom: 16px; }
-    .argument__encart p { font-size: 0.88rem; color: rgba(255,255,255,0.68); line-height: 1.7; }
+    /* HERO */
+    .page-hero{position:relative;height:70vh;min-height:480px;display:flex;align-items:flex-end;overflow:hidden;}
+    .page-hero__image{position:absolute;inset:0;background:var(--bleu) url('images/selle-neuve-siege_10_11zon.jpg') center center / cover no-repeat;}
+    .page-hero__image::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(30,60,90,0.1) 0%,rgba(20,45,70,0.72) 100%);}
+    .page-hero__content{position:relative;z-index:2;padding:0 40px 72px;animation:fadeUp 0.9s cubic-bezier(0.25,0.46,0.45,0.94) both;}
+    .page-hero__content h1{font-family:var(--serif);font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:300;color:var(--blanc);line-height:1.0;margin-bottom:16px;}
+    .page-hero__content h1 em{font-style:italic;color:var(--or-clair);}
+    .page-hero__content p{font-size:1rem;color:rgba(255,255,255,0.78);max-width:540px;line-height:1.7;}
 
-    /* CARACTERISTIQUES */
-    .caracteristiques { background: var(--ivoire); padding: 88px 0; }
-    .caracteristiques__header { text-align: center; margin-bottom: 60px; }
-    .caracteristiques__header h2 { font-family: var(--serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 400; color: var(--bleu); }
-    .caracteristiques__grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-    .carac-card { background: var(--blanc); padding: 36px 28px; border-bottom: 2px solid transparent; transition: border-color var(--transition), box-shadow var(--transition); }
-    .carac-card:hover { border-color: var(--or); box-shadow: var(--shadow); }
-    .carac-card__icone { font-family: var(--serif); font-size: 2.8rem; font-weight: 300; color: var(--or); opacity: 0.5; line-height: 1; margin-bottom: 16px; }
-    .carac-card__titre { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; color: var(--bleu); margin-bottom: 10px; }
-    .carac-card__desc { font-size: 0.84rem; color: #5a5a5a; line-height: 1.7; }
-
-    /* GALERIE */
-    .galerie { background: var(--bleu-section); padding: 88px 0; }
-    .galerie__header { text-align: center; margin-bottom: 56px; }
-    .galerie__header .eyebrow { color: var(--or-clair); }
-    .galerie__header h2 { font-family: var(--serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 300; color: var(--blanc); }
-    .galerie__grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
-    .galerie__item { overflow: hidden; }
-    .galerie__item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; transition: transform 0.7s ease; display: block; }
-    .galerie__item:hover img { transform: scale(1.04); }
-    .galerie__item--large { grid-column: span 2; }
-    .galerie__item--large img { aspect-ratio: 2/1; }
+    /* INTRO */
+    .intro{background:var(--blanc);padding:96px 0;}
+    .intro__inner{display:grid;grid-template-columns:3fr 2fr;gap:72px;align-items:start;}
+    .intro__texte h2{font-family:var(--serif);font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:400;color:var(--bleu);line-height:1.2;margin-bottom:24px;}
+    .intro__texte p{color:#4a4a4a;line-height:1.85;font-size:0.97rem;margin-bottom:18px;}
+    .intro__encart{background:var(--bleu-section);padding:40px 32px;}
+    .intro__encart .eyebrow{color:var(--or-clair);}
+    .intro__encart h3{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--blanc);margin-bottom:16px;}
+    .intro__encart p{font-size:0.88rem;color:rgba(255,255,255,0.68);line-height:1.7;margin-bottom:16px;}
+    .intro__encart strong{color:var(--or-clair);font-weight:500;}
 
     /* GAMME */
-    .gamme { background: var(--blanc); padding: 88px 0; }
-    .gamme__header { text-align: center; margin-bottom: 60px; }
-    .gamme__header h2 { font-family: var(--serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 400; color: var(--bleu); }
-    .gamme__grille { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
-    .gamme-card { position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--bleu); }
-    .gamme-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.75; transition: transform 0.7s ease; }
-    .gamme-card:hover img { transform: scale(1.04); }
-    .gamme-card__overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(20,45,70,0.88) 0%, rgba(20,45,70,0.1) 55%);
-      display: flex; flex-direction: column; justify-content: flex-end; padding: 36px 32px;
-    }
-    .gamme-card__label { font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--or-clair); margin-bottom: 8px; }
-    .gamme-card__titre { font-family: var(--serif); font-size: 1.8rem; font-weight: 400; color: var(--blanc); margin-bottom: 10px; }
-    .gamme-card__desc { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+    .gamme{background:var(--ivoire);padding:96px 0;}
+    .gamme__header{text-align:center;margin-bottom:64px;}
+    .gamme__header h2{font-family:var(--serif);font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:400;color:var(--bleu);}
+
+    .gamme-item{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:3px;align-items:stretch;}
+    .gamme-item:nth-child(even){direction:rtl;}
+    .gamme-item:nth-child(even)>*{direction:ltr;}
+    .gamme-item__image{overflow:hidden;aspect-ratio:4/3;background:var(--bleu-pale);}
+    .gamme-item__image img{width:100%;height:100%;object-fit:contain;padding:40px;transition:transform 0.7s ease;}
+    .gamme-item:hover .gamme-item__image img{transform:scale(1.04);}
+    .gamme-item__texte{background:var(--blanc);padding:56px 48px;display:flex;flex-direction:column;justify-content:center;}
+    .gamme-item__label{font-size:0.66rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--or);margin-bottom:12px;}
+    .gamme-item__titre{font-family:var(--serif);font-size:2.2rem;font-weight:400;color:var(--bleu);margin-bottom:20px;line-height:1.15;}
+    .gamme-item__desc{font-size:0.92rem;color:#4a4a4a;line-height:1.8;margin-bottom:24px;}
+    .gamme-item__carac{list-style:none;}
+    .gamme-item__carac li{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--ivoire-fonce);font-size:0.88rem;color:#3a3a3a;}
+    .gamme-item__carac li::before{content:'✦';color:var(--or);font-size:0.6rem;flex-shrink:0;margin-top:3px;}
 
     /* CTA */
-    .cta-section { background: var(--ivoire-fonce); padding: 72px 0; text-align: center; }
-    .cta-section h2 { font-family: var(--serif); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 400; color: var(--bleu); margin-bottom: 16px; }
-    .cta-section p { font-size: 0.97rem; color: #5a5a5a; margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
-    .btn-cta { display: inline-flex; align-items: center; gap: 12px; font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blanc); background: var(--bleu); padding: 15px 36px; transition: background var(--transition); }
-    .btn-cta:hover { background: var(--bleu-fonce); }
+    .cta-section{background:var(--bleu-section);padding:80px 0;text-align:center;}
+    .cta-section h2{font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:300;color:var(--blanc);margin-bottom:16px;}
+    .cta-section p{font-size:0.97rem;color:rgba(255,255,255,0.65);margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto;font-style:italic;font-family:var(--serif);}
+    .btn-cta{display:inline-flex;align-items:center;gap:12px;font-size:0.76rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--bleu);background:var(--or);padding:15px 36px;transition:background var(--transition);}
+    .btn-cta:hover{background:var(--or-clair);}
 
-    @media (max-width: 1024px) {
-      .argument__inner { grid-template-columns: 1fr; gap: 44px; }
-      .caracteristiques__grille { grid-template-columns: 1fr 1fr; }
-      .gamme__grille { grid-template-columns: 1fr; }
+    /* FOOTER */
+    .footer{background:var(--footer-bg);padding:56px 0 36px;}
+    .footer__inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;margin-bottom:44px;}
+    .footer__logo img{height:56px;width:auto;margin-bottom:16px;filter:brightness(0) invert(1);opacity:0.85;}
+    .footer__nom{font-family:var(--serif);font-size:1rem;color:var(--blanc);margin-bottom:4px;}
+    .footer__metier{font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--or);margin-bottom:14px;}
+    .footer__desc{font-size:0.84rem;color:rgba(255,255,255,0.4);line-height:1.7;max-width:280px;}
+    .footer__col-titre{font-size:0.67rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--or);margin-bottom:18px;}
+    .footer__liens{list-style:none;}
+    .footer__liens li{margin-bottom:10px;}
+    .footer__liens a{font-size:0.84rem;color:rgba(255,255,255,0.45);transition:color var(--transition);}
+    .footer__liens a:hover{color:var(--blanc);}
+    .footer__bas{border-top:1px solid rgba(255,255,255,0.07);padding-top:26px;display:flex;justify-content:space-between;align-items:center;}
+    .footer__copy{font-size:0.76rem;color:rgba(255,255,255,0.28);}
+    .footer__social a{width:34px;height:34px;border:1px solid rgba(255,255,255,0.13);display:inline-flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.38);font-size:0.75rem;transition:border-color var(--transition),color var(--transition);}
+    .footer__social a:hover{border-color:var(--or);color:var(--or);}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+
+    @media(max-width:1024px){
+      .intro__inner{grid-template-columns:1fr;gap:44px;}
+      .gamme-item{grid-template-columns:1fr;}
+      .gamme-item:nth-child(even){direction:ltr;}
     }
-    @media (max-width: 768px) {
-      .page-hero__content { padding: 0 20px 48px; }
-      .caracteristiques__grille { grid-template-columns: 1fr; }
-      .galerie__grille { grid-template-columns: 1fr 1fr; }
-      .galerie__item--large { grid-column: span 2; }
-      .argument { padding: 56px 0; } .caracteristiques { padding: 56px 0; }
-      .galerie { padding: 56px 0; } .gamme { padding: 56px 0; }
+    @media(max-width:768px){
+      .container{padding:0 20px;}.nav{padding:16px 20px;}.nav.scrolled{padding:10px 20px;}
+      .nav__links{display:none;}.nav__burger{display:flex;}
+      .page-hero__content{padding:0 20px 52px;}
+      .gamme-item__texte{padding:36px 28px;}
+      .intro,.gamme{padding:60px 0;}
+      .footer__inner{grid-template-columns:1fr;gap:32px;}
+      .footer__bas{flex-direction:column;gap:14px;text-align:center;}
     }
   </style>
 </head>
 <body>
   <header>
     <nav class="nav" id="nav">
-      <a href="index.html" class="nav__logo"><img src="images/logo-Benjamin_21_11zon.jpg" alt="Benjamin Mahieu" width="120" height="52"></a>
+      <a href="index.html" class="nav__logo"><img src="images/logo-Benjamin_21_11zon.png" alt="Benjamin Mahieu" width="160" height="64"></a>
       <ul class="nav__links">
         <li><a href="diagnostic-modification.html">Modification</a></li>
         <li><a href="selles-neuves.html">Selles neuves évolutives</a></li>
@@ -126,89 +143,26 @@
       <div class="page-hero__image"></div>
       <div class="page-hero__content">
         <span class="eyebrow" style="color:var(--or-clair)">Gamme Benjamin Mahieu</span>
-        <h1>Selles neuves<br><em>évolutives</em></h1>
-        <p>Conçues pour s'adapter à la morphologie de votre cheval et évoluer avec lui dans le temps.</p>
+        <h1>Offrez-lui le véritable<br><em>sur-mesure</em></h1>
+        <p>Une selle évolutive garantissant une adaptation parfaite au physique de votre cheval à chaque étape de sa vie.</p>
       </div>
     </section>
 
-    <section class="argument reveal">
+    <section class="intro reveal">
       <div class="container">
-        <div class="argument__inner">
-          <div class="argument__texte">
-            <span class="eyebrow">L'argument principal</span>
-            <h2>Une selle qui évolue avec votre cheval</h2>
-            <p>La grande majorité des selles du marché sont figées dans leur forme. Dès que la morphologie de votre cheval change — et elle change — la selle ne convient plus.</p>
-            <p>Benjamin a conçu sa propre gamme de selles en partant de ce constat. Ses selles évolutives sont pensées dès la conception pour pouvoir être adaptées à tout moment, sans compromettre la qualité du matériau ni la durée de vie de la selle.</p>
-            <p>Les panneaux sont fabriqués sur mesure, l'arcade est interchangeable, et Benjamin réalise lui-même toutes les adaptations nécessaires au fil du temps.</p>
-          </div>
-          <div class="argument__encart">
+        <div class="intro__inner">
+          <div class="intro__texte">
             <span class="eyebrow">Le principe</span>
-            <h3>Évolutive par conception</h3>
-            <p>Panneaux fabriqués sur mesure selon la morphologie de votre cheval. Arcade interchangeable selon l'évolution du garrot. Toutes les adaptations futures réalisées par Benjamin lui-même.</p>
+            <h2>Il me paraît indispensable que votre selle soit toujours parfaitement adaptée à votre cheval</h2>
+            <p>Depuis septembre 2022, j'ai décidé de vous proposer une selle évolutive garantissant une adaptation parfaite au physique de votre cheval à chaque étape de sa vie.</p>
+            <p>Pérenne, je pourrai la modifier et l'adapter à vos diverses montures tout au long de votre parcours équestre.</p>
+            <p>Deux éléments sont indispensables pour que votre selle soit parfaitement adaptée à la morphologie de votre cheval : <strong>l'arcade</strong> et <strong>les panneaux</strong>.</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="caracteristiques reveal">
-      <div class="container">
-        <div class="caracteristiques__header">
-          <span class="eyebrow">Ce qui les différencie</span>
-          <h2>Les caractéristiques de la gamme</h2>
-        </div>
-        <div class="caracteristiques__grille">
-          <div class="carac-card">
-            <div class="carac-card__icone">✦</div>
-            <h3 class="carac-card__titre">Panneaux sur mesure</h3>
-            <p class="carac-card__desc">Fabriqués selon la morphologie exacte de votre cheval au moment de la commande, pour un contact parfait dès le premier jour.</p>
-          </div>
-          <div class="carac-card">
-            <div class="carac-card__icone">✦</div>
-            <h3 class="carac-card__titre">Arcade interchangeable</h3>
-            <p class="carac-card__desc">Le système d'arcade peut être remplacé sans intervention majeure, pour s'adapter à l'évolution du garrot de votre cheval.</p>
-          </div>
-          <div class="carac-card">
-            <div class="carac-card__icone">✦</div>
-            <h3 class="carac-card__titre">Suivi dans le temps</h3>
-            <p class="carac-card__desc">Benjamin assure le suivi et les adaptations nécessaires au fil du temps. Votre selle évolue avec votre cheval, pas l'inverse.</p>
-          </div>
-          <div class="carac-card">
-            <div class="carac-card__icone">✦</div>
-            <h3 class="carac-card__titre">Cuirs sélectionnés</h3>
-            <p class="carac-card__desc">Des matériaux de qualité, choisis pour leur durabilité, leur souplesse et leur compatibilité avec une selle de travail quotidien.</p>
-          </div>
-          <div class="carac-card">
-            <div class="carac-card__icone">✦</div>
-            <h3 class="carac-card__titre">Fabrication artisanale</h3>
-            <p class="carac-card__desc">Chaque selle est réalisée à la main selon les techniques de sellerie traditionnelle, héritées des plus grands maîtres selliers.</p>
-          </div>
-          <div class="carac-card">
-            <div class="carac-card__icone">✦</div>
-            <h3 class="carac-card__titre">Diagnostic inclus</h3>
-            <p class="carac-card__desc">L'acquisition d'une selle neuve comprend un diagnostic complet sur votre cheval pour garantir un ajustement parfait dès la livraison.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="galerie reveal">
-      <div class="container">
-        <div class="galerie__header">
-          <span class="eyebrow">La gamme en images</span>
-          <h2>Détails & finitions</h2>
-        </div>
-        <div class="galerie__grille">
-          <div class="galerie__item galerie__item--large">
-            <img src="images/selle-dos-cheval_8_11zon.jpg" alt="Selle posée sur le dos du cheval" loading="lazy">
-          </div>
-          <div class="galerie__item">
-            <img src="images/detail-cuir-selle-artisanale.jpg" alt="Détail cuir selle artisanale" loading="lazy">
-          </div>
-          <div class="galerie__item">
-            <img src="images/selle-neuve_5_11zon.jpg" alt="Selle neuve Benjamin Mahieu" loading="lazy">
-          </div>
-          <div class="galerie__item">
-            <img src="images/selle-neuve_6_11zon.jpg" alt="Selle neuve Benjamin Mahieu" loading="lazy">
+          <div class="intro__encart">
+            <span class="eyebrow">Les deux éléments clés</span>
+            <h3>L'arcade & les panneaux</h3>
+            <p><strong>L'arcade</strong> est une lame de métal sous le pommeau qui donne l'angle avant de la selle. Toutes mes arcades sont fabriquées à l'unité, sur-mesure par un Maître ferronnier Artisan d'Art. Le système d'arcade interchangeable permet de modifier l'angle avec précision et de manière instantanée.</p>
+            <p><strong>Les panneaux</strong> sont fabriqués sur-mesure dans mon atelier. Ils sont la clé de la véritable adaptation sur-mesure à la morphologie de votre cheval. Je prends en compte les diverses dissymétries et particularités physiques de votre monture.</p>
           </div>
         </div>
       </div>
@@ -217,25 +171,43 @@
     <section class="gamme reveal">
       <div class="container">
         <div class="gamme__header">
-          <span class="eyebrow">Deux disciplines</span>
-          <h2>Mixte & Dressage</h2>
+          <span class="eyebrow">La gamme</span>
+          <h2>Selle mixte & Selle dressage</h2>
         </div>
-        <div class="gamme__grille">
-          <div class="gamme-card">
-            <img src="images/selle-neuve-siege_10_11zon.jpg" alt="Selle mixte Benjamin Mahieu" loading="lazy">
-            <div class="gamme-card__overlay">
-              <span class="gamme-card__label">Gamme 01</span>
-              <h3 class="gamme-card__titre">Selle mixte</h3>
-              <p class="gamme-card__desc">Polyvalente, conçue pour le travail quotidien et les cavaliers pratiquant plusieurs disciplines.</p>
-            </div>
+
+        <div class="gamme-item">
+          <div class="gamme-item__image">
+            <img src="images/selle-neuve_6_11zon.png" alt="Selle mixte Benjamin Mahieu" loading="lazy">
           </div>
-          <div class="gamme-card">
-            <img src="images/selle-dressage-1_9_11zon.jpg" alt="Selle dressage Benjamin Mahieu" loading="lazy">
-            <div class="gamme-card__overlay">
-              <span class="gamme-card__label">Gamme 02</span>
-              <h3 class="gamme-card__titre">Selle dressage</h3>
-              <p class="gamme-card__desc">Spécialement conçue pour le dressage, avec une assise profonde favorisant la communication entre le cavalier et son cheval.</p>
-            </div>
+          <div class="gamme-item__texte">
+            <span class="gamme-item__label">Gamme 01</span>
+            <h3 class="gamme-item__titre">Selle mixte</h3>
+            <p class="gamme-item__desc">Polyvalente et évolutive, conçue pour le travail quotidien et les cavaliers pratiquant plusieurs disciplines. Arcade interchangeable, panneaux fabriqués sur-mesure dans l'atelier.</p>
+            <ul class="gamme-item__carac">
+              <li>Arcade fabriquée sur-mesure par un Maître ferronnier</li>
+              <li>Panneaux fabriqués sur-mesure en atelier</li>
+              <li>Système d'arcade interchangeable</li>
+              <li>Prise de mesures le jour de la création</li>
+              <li>Suivi et adaptations inclus</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="gamme-item">
+          <div class="gamme-item__image">
+            <img src="images/selle-dressage-2_4_11zon.png" alt="Selle dressage Benjamin Mahieu" loading="lazy">
+          </div>
+          <div class="gamme-item__texte">
+            <span class="gamme-item__label">Gamme 02</span>
+            <h3 class="gamme-item__titre">Selle dressage</h3>
+            <p class="gamme-item__desc">Spécialement conçue pour le dressage, avec une assise profonde favorisant la communication entre le cavalier et son cheval. Même système évolutif que la gamme mixte.</p>
+            <ul class="gamme-item__carac">
+              <li>Assise profonde pour une position optimale</li>
+              <li>Arcade fabriquée sur-mesure par un Maître ferronnier</li>
+              <li>Panneaux fabriqués sur-mesure en atelier</li>
+              <li>Système d'arcade interchangeable</li>
+              <li>Suivi et adaptations inclus</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -244,11 +216,8 @@
     <section class="cta-section reveal">
       <div class="container">
         <h2>Vous souhaitez en savoir plus sur la gamme ?</h2>
-        <p>Contactez Benjamin pour discuter de votre projet. Chaque selle est pensée sur mesure, un échange est toujours le point de départ.</p>
-        <a href="contact.html" class="btn-cta">
-          Me contacter
-          <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M9 1l4 4-4 4M1 5h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </a>
+        <p>La prise de mesures s'effectue le jour du début de la création afin d'être le plus précis dans l'adaptation à la morphologie de votre cheval.</p>
+        <a href="contact.html" class="btn-cta">Me contacter <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M9 1l4 4-4 4M1 5h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
       </div>
     </section>
   </main>
@@ -257,8 +226,10 @@
     <div class="container">
       <div class="footer__inner">
         <div>
-          <div class="footer__logo"><img src="images/logo-Benjamin_21_11zon.jpg" alt="Benjamin Mahieu" width="110" height="44"></div>
-          <p class="footer__desc">Diagnostic, modification et adaptation de selles d'équitation. Indépendant, objectif, au service du bien-être de votre cheval.</p>
+          <div class="footer__logo"><img src="images/logo-Benjamin_21_11zon.png" alt="Benjamin Mahieu"></div>
+          <p class="footer__nom">Benjamin MAHIEU</p>
+          <p class="footer__metier">Artisan d'art</p>
+          <p class="footer__desc">Diagnostic et Modification de selles d'équitation</p>
         </div>
         <div>
           <div class="footer__col-titre">Navigation</div>
@@ -284,12 +255,12 @@
     </div>
   </footer>
   <script>
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
-    const burger = document.getElementById('burger'); const mobileNav = document.getElementById('mobile-nav');
-    burger.addEventListener('click', () => { const open = mobileNav.classList.toggle('open'); burger.classList.toggle('open', open); burger.setAttribute('aria-expanded', open); document.body.style.overflow = open ? 'hidden' : ''; });
-    mobileNav.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { mobileNav.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }); });
-    document.querySelectorAll('.reveal').forEach(el => { new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } }); }, { threshold: 0.07 }).observe(el); });
+    const nav=document.getElementById('nav');
+    window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+    const burger=document.getElementById('burger'),mobileNav=document.getElementById('mobile-nav');
+    burger.addEventListener('click',()=>{const open=mobileNav.classList.toggle('open');burger.classList.toggle('open',open);burger.setAttribute('aria-expanded',open);document.body.style.overflow=open?'hidden':'';});
+    mobileNav.querySelectorAll('a').forEach(l=>{l.addEventListener('click',()=>{mobileNav.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');document.body.style.overflow='';});});
+    document.querySelectorAll('.reveal').forEach(el=>{new IntersectionObserver((e)=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible');});},{threshold:0.07}).observe(el);});
   </script>
 </body>
 </html>
