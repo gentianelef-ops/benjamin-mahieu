@@ -18,7 +18,7 @@
     /* NAV */
     .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;transition:background var(--transition),padding var(--transition),box-shadow var(--transition);}
     .nav.scrolled{background:var(--bleu-nav);padding:12px 40px;box-shadow:0 2px 20px rgba(0,0,0,0.15);backdrop-filter:blur(8px);}
-    .nav__logo img{height:104px;width:auto;display:block;background:transparent!important;border:0!important;box-shadow:none!important;mix-blend-mode:normal!important;object-fit:contain;transition:filter var(--transition);}
+    .nav__logo img{height:104px;width:auto;display:block;background:transparent!important;border:0!important;box-shadow:none!important;mix-blend-mode:normal!important;object-fit:contain;transition:filter var(--transition);filter:brightness(0) invert(1);}
     .nav.scrolled .nav__logo img{filter:brightness(0) invert(1);mix-blend-mode:normal!important;}
     .nav__links{display:flex;align-items:center;gap:36px;list-style:none;}
     .nav__links a{font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--blanc);font-weight:400;position:relative;padding-bottom:3px;text-shadow:0 1px 6px rgba(0,0,0,0.5);}
@@ -65,9 +65,9 @@
     .gamme-item{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:3px;align-items:stretch;}
     .gamme-item:nth-child(even) .gamme-item__image{order:2;}
     .gamme-item:nth-child(even) .gamme-item__texte{order:1;}
-    .gamme-item__image{overflow:hidden;background:linear-gradient(180deg,rgba(237,233,225,0.58),rgba(247,244,239,0.18));display:flex;align-items:center;justify-content:center;padding:26px;min-height:420px;}
-    .gamme-item__image img{width:min(112%,560px);max-width:none;max-height:380px;object-fit:contain;filter:drop-shadow(0 18px 18px rgba(13,30,46,0.13));transition:transform 0.7s ease;}
-    .gamme-item:hover .gamme-item__image img{transform:scale(1.025);}
+    .gamme-item__image{overflow:hidden;background:var(--ivoire-fonce);display:flex;align-items:center;justify-content:center;padding:40px;min-height:400px;}
+    .gamme-item__image img{max-width:100%;max-height:320px;object-fit:contain;transition:transform 0.7s ease;}
+    .gamme-item:hover .gamme-item__image img{transform:scale(1.04);}
     .gamme-item__texte{background:var(--blanc);padding:56px 48px;display:flex;flex-direction:column;justify-content:center;}
     .gamme-item__label{font-size:0.66rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--or);margin-bottom:12px;}
     .gamme-item__titre{font-family:var(--serif);font-size:2.2rem;font-weight:400;color:var(--bleu);margin-bottom:20px;line-height:1.15;}
@@ -75,8 +75,8 @@
     .gamme-item__carac{list-style:none;margin-bottom:28px;}
     .gamme-item__carac li{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--ivoire-fonce);font-size:0.88rem;color:#3a3a3a;}
     .gamme-item__carac li::before{content:'—';color:var(--or);flex-shrink:0;}
-    .gamme-item__prix{background:var(--bleu-section);padding:20px 24px;margin-top:8px;border-left:3px solid var(--or);box-shadow:0 10px 24px rgba(30,58,95,0.08);}
-    .gamme-item__prix p{font-size:0.82rem;color:rgba(255,255,255,0.74);line-height:1.8;}
+    .gamme-item__prix{background:var(--bleu-section);padding:20px 24px;margin-top:8px;}
+    .gamme-item__prix p{font-size:0.82rem;color:rgba(255,255,255,0.7);line-height:1.8;}
     .gamme-item__prix strong{color:var(--or-clair);font-weight:500;}
 
     /* GALERIE */
@@ -138,7 +138,7 @@
 <body>
   <header>
     <nav class="nav" id="nav">
-      <a href="index.html" class="nav__logo"><img src="images/logo-Benjamin_21_11zon.png" alt="Benjamin Mahieu" width="200" height="80"></a>
+      <a href="index.html" class="nav__logo"><img src="images/logotranspar.png" alt="Benjamin Mahieu" width="200" height="80"></a>
       <ul class="nav__links">
         <li><a href="diagnostic-modification.html">Modification</a></li>
         <li><a href="selles-neuves.html">Selles neuves évolutives</a></li>
@@ -269,7 +269,7 @@
     <div class="container">
       <div class="footer__inner">
         <div>
-          <div class="footer__logo"><img src="images/logo-Benjamin_21_11zon.png" alt="Benjamin Mahieu"></div>
+          <div class="footer__logo"><img src="images/logotranspar.png" alt="Benjamin Mahieu"></div>
           <p class="footer__nom">Benjamin MAHIEU</p>
           <p class="footer__metier">Artisan d'art</p>
           <p class="footer__desc">Diagnostic et Modification de selles d'équitation</p>

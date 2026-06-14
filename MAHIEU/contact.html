@@ -19,7 +19,7 @@
     /* NAV */
     .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;transition:background var(--transition),padding var(--transition),box-shadow var(--transition);}
     .nav.scrolled{background:var(--bleu-nav);padding:12px 40px;box-shadow:0 2px 20px rgba(0,0,0,0.15);backdrop-filter:blur(8px);}
-    .nav__logo img{height:104px;width:auto;display:block;background:transparent!important;border:0!important;box-shadow:none!important;mix-blend-mode:normal!important;object-fit:contain;transition:filter var(--transition);}
+    .nav__logo img{height:104px;width:auto;display:block;background:transparent!important;border:0!important;box-shadow:none!important;mix-blend-mode:normal!important;object-fit:contain;transition:filter var(--transition);filter:brightness(0) invert(1);}
     .nav.scrolled .nav__logo img{filter:brightness(0) invert(1);mix-blend-mode:normal!important;}
     .nav__links{display:flex;align-items:center;gap:36px;list-style:none;}
     .nav__links a{font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--blanc);font-weight:400;position:relative;padding-bottom:3px;text-shadow:0 1px 4px rgba(0,0,0,0.4);}
@@ -92,7 +92,7 @@
 <body>
   <header>
     <nav class="nav" id="nav">
-      <a href="index.html" class="nav__logo"><img src="images/logo-Benjamin_21_11zon.png" alt="Benjamin Mahieu" width="160" height="64"></a>
+      <a href="index.html" class="nav__logo"><img src="images/logotranspar.png" alt="Benjamin Mahieu" width="160" height="64"></a>
       <ul class="nav__links">
         <li><a href="diagnostic-modification.html">Modification</a></li>
         <li><a href="selles-neuves.html">Selles neuves évolutives</a></li>
@@ -156,7 +156,7 @@
     <div class="container">
       <div class="footer__inner">
         <div>
-          <div class="footer__logo"><img src="images/logo-Benjamin_21_11zon.png" alt="Benjamin Mahieu"></div>
+          <div class="footer__logo"><img src="images/logotranspar.png" alt="Benjamin Mahieu"></div>
           <p class="footer__nom">Benjamin MAHIEU</p>
           <p class="footer__metier">Artisan d'art</p>
           <p class="footer__desc">Diagnostic et Modification de selles d'équitation</p>
