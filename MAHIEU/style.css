@@ -209,10 +209,6 @@ a { color: inherit; text-decoration: none; }
 }
 .situation-carte:hover { background: rgba(255,255,255,0.07); }
 .situation-carte:hover::before { width: 100%; }
-.situation-carte__num {
-  font-family: var(--serif); font-size: 2.5rem; font-weight: 300;
-  color: rgba(184,151,90,0.25); line-height: 1; margin-bottom: 16px;
-}
 .situation-carte__titre {
   font-family: var(--serif); font-size: 1.15rem;
   font-weight: 500; color: var(--blanc); margin-bottom: 10px;
