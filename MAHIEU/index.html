@@ -51,7 +51,7 @@
       backdrop-filter: blur(8px);
     }
     .nav__logo img {
-      height: 104px; width: auto; display: block;
+      height: 112px; width: auto; display: block;
       background: transparent !important; border: 0 !important; box-shadow: none !important;
       mix-blend-mode: normal !important; object-fit: contain;
       transition: filter var(--transition);
@@ -82,14 +82,15 @@
 
     /* ---- HERO ---- */
     .hero { position: relative; height: 100vh; min-height: 640px; display: flex; align-items: flex-end; overflow: hidden; }
-    .hero__image { position: absolute; inset: 0; background: var(--bleu) url('images/hero-benjamin-mahieu_.jpg') center center / cover no-repeat; }
+    .hero__image { position: absolute; inset: 0; background: var(--bleu) url('images/hero-couture.webp') center center / cover no-repeat; }
     .hero__image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(30,60,90,0.15) 0%, rgba(30,60,90,0.5) 55%, rgba(20,45,70,0.78) 100%); }
     .hero__content { position: relative; z-index: 2; padding: 0 40px 80px; max-width: 800px; animation: fadeUp 1.1s cubic-bezier(0.25,0.46,0.45,0.94) both; animation-delay: 0.2s; }
-    .hero__label { display: inline-block; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--or-clair); margin-bottom: 20px; }
+    .hero__label { display: inline-block; font-size: 0.74rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--or-clair); margin-bottom: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.35); }
     .hero__titre { font-family: var(--serif); font-size: clamp(2.8rem, 5.5vw, 5rem); font-weight: 300; color: var(--blanc); line-height: 1.0; margin-bottom: 20px; }
     .hero__titre em { font-style: italic; color: var(--or-clair); }
     .hero__sous-titre { font-size: 1.05rem; color: rgba(255,255,255,0.82); font-weight: 300; max-width: 520px; line-height: 1.7; margin-bottom: 44px; }
-    .hero__btn { display: inline-flex; align-items: center; gap: 14px; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blanc); border: 1px solid rgba(255,255,255,0.55); padding: 14px 32px; transition: border-color var(--transition), background var(--transition); }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero__btn { display: inline-flex; align-items: center; gap: 14px; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blanc); border: 1px solid rgba(255,255,255,0.55); padding: 14px 32px; transition: border-color var(--transition), background var(--transition); white-space: nowrap; }
     .hero__btn:hover { border-color: var(--or-clair); background: rgba(184,151,90,0.15); }
     .hero__scroll { position: absolute; bottom: 36px; right: 40px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 10px; color: rgba(255,255,255,0.45); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; writing-mode: vertical-rl; }
     .hero__scroll::before { content: ''; width: 1px; height: 44px; background: rgba(255,255,255,0.25); }
@@ -115,7 +116,6 @@
     .situation-carte::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--or-clair); transition: width var(--transition); }
     .situation-carte:hover { background: rgba(255,255,255,0.10); }
     .situation-carte:hover::after { width: 100%; }
-    .situation-carte__num { font-family: var(--serif); font-size: 2.2rem; font-weight: 300; color: rgba(212,176,122,0.22); line-height: 1; margin-bottom: 14px; }
     .situation-carte__titre { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: var(--blanc); margin-bottom: 8px; }
     .situation-carte__desc { font-size: 0.84rem; color: rgba(255,255,255,0.58); line-height: 1.7; }
 
@@ -228,8 +228,10 @@
       .nav.scrolled { padding: 10px 20px; }
       .nav__links { display: none; }
       .nav__burger { display: flex; }
-      .nav__logo img { height: 76px; }
+      .nav__logo img { height: 82px; }
       .hero__content { padding: 0 20px 60px; }
+      .hero__actions { flex-direction: column; align-items: flex-start; }
+      .hero__btn { max-width: 100%; padding: 14px 24px; letter-spacing: 0.13em; }
       .hero__scroll { display: none; }
       .problematique { padding: 60px 0; }
       .problematique__image { display: none; }
@@ -250,6 +252,7 @@
     @media (max-width: 480px) {
       .situations__grille { grid-template-columns: 1fr; }
       .hero__titre { font-size: clamp(2.4rem, 8vw, 3.2rem); }
+      .hero__btn { font-size: 0.68rem; letter-spacing: 0.08em; padding: 12px 16px; gap: 10px; }
     }
   </style>
 </head>
@@ -257,7 +260,7 @@
 
   <header>
     <nav class="nav" id="nav">
-      <a href="index.html" class="nav__logo"><img src="images/logotranspar.png" alt="Benjamin Mahieu" width="160" height="64"></a>
+      <a href="index.html" class="nav__logo"><img src="images/nouv-logo.png" alt="Benjamin Mahieu" width="160" height="64"></a>
       <ul class="nav__links">
         <li><a href="diagnostic-modification.html">Modification</a></li>
         <li><a href="selles-neuves.html">Selles neuves évolutives</a></li>
@@ -282,15 +285,21 @@
       <div class="hero__content">
         <span class="hero__label">Benjamin MAHIEU — Artisan d'art</span>
         <h1 class="hero__titre">
-          Diagnostic &amp; adaptation<br><em>de selles sur-mesure</em>
+          Diagnostic &amp; adaptation<br><em>Selles neuves sur mesure</em>
         </h1>
         <p class="hero__sous-titre">
           Modification, adaptation et selles neuves évolutives. Benjamin se déplace dans votre écurie pour vérifier l'adéquation entre votre selle et votre cheval.
         </p>
-        <a href="contact.html" class="hero__btn">
-          Me contacter
-          <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M10 1l5 5-5 5M1 6h14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </a>
+        <div class="hero__actions">
+          <a href="diagnostic-modification.html" class="hero__btn">
+            Adapter ma selle
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M10 1l5 5-5 5M1 6h14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </a>
+          <a href="selles-neuves.html" class="hero__btn">
+            Découvrir les selles neuves
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M10 1l5 5-5 5M1 6h14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </a>
+        </div>
       </div>
       <div class="hero__scroll" aria-hidden="true">Défiler</div>
     </section>
@@ -321,32 +330,26 @@
         </div>
         <div class="situations__grille">
           <article class="situation-carte">
-            <div class="situation-carte__num">01</div>
             <h3 class="situation-carte__titre">Contrôle de routine</h3>
             <p class="situation-carte__desc">Pour vous assurer que tout va bien entre votre selle et votre cheval, même en l'absence de signe apparent.</p>
           </article>
           <article class="situation-carte">
-            <div class="situation-carte__num">02</div>
             <h3 class="situation-carte__titre">Nouveau cheval</h3>
             <p class="situation-carte__desc">Pour savoir si votre selle actuelle correspond bien à la morphologie de votre nouveau cheval.</p>
           </article>
           <article class="situation-carte">
-            <div class="situation-carte__num">03</div>
             <h3 class="situation-carte__titre">Achat d'une selle</h3>
             <p class="situation-carte__desc">Lors de l'acquisition d'une selle neuve ou d'occasion, pour vérifier son adéquation avec votre cheval.</p>
           </article>
           <article class="situation-carte">
-            <div class="situation-carte__num">04</div>
             <h3 class="situation-carte__titre">Signes d'inconfort</h3>
             <p class="situation-carte__desc">Si votre cheval réagit au sanglage, au montoir, ou montre tout comportement inhabituellement négatif.</p>
           </article>
           <article class="situation-carte">
-            <div class="situation-carte__num">05</div>
             <h3 class="situation-carte__titre">Blessure au garrot</h3>
             <p class="situation-carte__desc">En cas de blessures visibles au garrot, ou si un professionnel de la santé équine alerte de douleurs liées à la selle.</p>
           </article>
           <article class="situation-carte">
-            <div class="situation-carte__num">06</div>
             <h3 class="situation-carte__titre">Projet de selle neuve</h3>
             <p class="situation-carte__desc">Si vous envisagez l'acquisition d'une selle neuve, Benjamin vous accompagne dans ce choix avec objectivité.</p>
           </article>
@@ -395,13 +398,13 @@
             <span class="eyebrow">Qui est Benjamin Mahieu</span>
             <h2>Un artisan formé au plus haut niveau, au service de votre cheval</h2>
             <p>Benjamin Mahieu est un spécialiste en selle d'équitation. Évoluant depuis toujours dans le milieu équestre, il a d'abord été moniteur d'équitation, puis cavalier professionnel dans des écuries de haut niveau, en compétition de saut d'obstacles jusqu'en PRO2.</p>
-            <p>Il a ensuite décidé de vouer sa carrière au bien-être du cheval en accompagnant les cavaliers dans le choix de leurs selles. Après avoir été responsable technique pendant 9 ans pour une grande marque nationale, il s'est spécialisé dans la modification et l'adaptation de selle à l'anatomie du cheval.</p>
+            <p>Il a ensuite décidé de vouer sa carrière au bien-être du cheval en accompagnant les cavaliers dans le choix de leurs selles. Après avoir été responsable technique pendant 10 ans pour une grande marque nationale, il s'est spécialisé dans la modification et l'adaptation de selle à l'anatomie du cheval.</p>
             <p>Benjamin a eu l'opportunité d'être formé par l'un des meilleurs Maîtres Selliers du monde, Jean-Luc Parisot (Parisot Sellier), qui équipe entre autres les Écuyers du Cadre Noir de Saumur.</p>
             <div class="portrait__jalons">
               <div class="jalon"><span class="jalon__annee">1998</span><div class="jalon__texte"><strong>Diplômé BEES 1</strong>Moniteur d'équitation diplômé d'État</div></div>
               <div class="jalon"><span class="jalon__annee">Pro 2</span><div class="jalon__texte"><strong>Cavalier professionnel</strong>Compétition de saut d'obstacles en écuries de haut niveau</div></div>
-              <div class="jalon"><span class="jalon__annee">9 ans</span><div class="jalon__texte"><strong>Responsable technique</strong>Pour une grande marque nationale de selles d'équitation</div></div>
-              <div class="jalon"><span class="jalon__annee">Maître</span><div class="jalon__texte"><strong>Formé par Jean-Luc Parisot</strong>L'un des meilleurs Maîtres Selliers du monde, fournisseur du Cadre Noir de Saumur</div></div>
+              <div class="jalon"><span class="jalon__annee">10 ans</span><div class="jalon__texte"><strong>Responsable technique</strong>Pour une grande marque nationale de selles d'équitation</div></div>
+              <div class="jalon"><span class="jalon__annee">Maître</span><div class="jalon__texte"><strong>Formé par Jean-Luc Parisot</strong>L'un des meilleurs Maîtres Selliers du monde, sellier du Cadre Noir de Saumur</div></div>
               <div class="jalon"><span class="jalon__annee">2022</span><div class="jalon__texte"><strong>Gamme de selles neuves évolutives</strong>Lancement de sa propre gamme, mixte et dressage</div></div>
             </div>
           </div>
@@ -484,9 +487,9 @@
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17 14c0 .3-.1.7-.2 1s-.3.7-.6.9c-.5.5-1.1.7-1.7.7-.5 0-1-.1-1.5-.4-.5-.2-1-.5-1.4-.9a18 18 0 01-1.3-1.2 18 18 0 01-1.2-1.4c-.3-.5-.6-.9-.8-1.4-.3-.5-.4-1-.4-1.4 0-.6.2-1.1.6-1.6.4-.4.8-.6 1.3-.6.2 0 .3 0 .5.1.2.1.3.2.5.5l1.4 2c.1.2.2.4.2.5 0 .2 0 .3-.1.5l-.4.4-.4.5c.1.1.1.2.2.3l1.3 1.3.3.2.4-.4c.2-.2.3-.3.5-.3.2-.1.3-.1.5-.1.2 0 .3.1.5.2l2 1.5c.2.1.3.3.4.4v.5z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
               06 46 64 53 63
             </a>
-            <a href="mailto:benjamin.mahieu.dma@gmail.com" class="contact__coord">
+            <a href="mailto:benjamin.mahieu@sfr.fr" class="contact__coord">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M2 7l8 5.5L18 7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-              benjamin.mahieu.dma@gmail.com
+              benjamin.mahieu@sfr.fr
             </a>
           </div>
         </div>
@@ -500,7 +503,7 @@
     <div class="container">
       <div class="footer__inner">
         <div>
-          <div class="footer__logo"><img src="images/logotranspar.png" alt="Benjamin Mahieu"></div>
+          <div class="footer__logo"><img src="images/nouv-logo.png" alt="Benjamin Mahieu"></div>
           <p class="footer__nom">Benjamin MAHIEU</p>
           <p class="footer__metier">Artisan d'art</p>
           <p class="footer__desc">Diagnostic et Modification de selles d'équitation</p>

@@ -67,7 +67,9 @@
     .gamme-item:nth-child(even) .gamme-item__texte{order:1;}
     .gamme-item__image{overflow:hidden;background:var(--ivoire-fonce);display:flex;align-items:center;justify-content:center;padding:40px;min-height:400px;}
     .gamme-item__image img{max-width:100%;max-height:320px;object-fit:contain;transition:transform 0.7s ease;}
+    .gamme-item__image img.gamme-item__image--dressage{max-height:360px;transform:scale(1.08);}
     .gamme-item:hover .gamme-item__image img{transform:scale(1.04);}
+    .gamme-item:hover .gamme-item__image img.gamme-item__image--dressage{transform:scale(1.12);}
     .gamme-item__texte{background:var(--blanc);padding:56px 48px;display:flex;flex-direction:column;justify-content:center;}
     .gamme-item__label{font-size:0.66rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--or);margin-bottom:12px;}
     .gamme-item__titre{font-family:var(--serif);font-size:2.2rem;font-weight:400;color:var(--bleu);margin-bottom:20px;line-height:1.15;}
@@ -138,7 +140,7 @@
 <body>
   <header>
     <nav class="nav" id="nav">
-      <a href="index.html" class="nav__logo"><img src="images/logotranspar.png" alt="Benjamin Mahieu" width="200" height="80"></a>
+      <a href="index.html" class="nav__logo"><img src="images/nouv-logo.png" alt="Benjamin Mahieu" width="200" height="80"></a>
       <ul class="nav__links">
         <li><a href="diagnostic-modification.html">Modification</a></li>
         <li><a href="selles-neuves.html">Selles neuves évolutives</a></li>
@@ -217,7 +219,7 @@
 
         <div class="gamme-item">
           <div class="gamme-item__image">
-            <img src="images/selle-dressage-2_4_11zon.png" alt="Selle dressage Benjamin Mahieu" loading="lazy">
+            <img src="images/selle-dressage-2_4_11zon.png" alt="Selle dressage Benjamin Mahieu" loading="lazy" class="gamme-item__image--dressage">
           </div>
           <div class="gamme-item__texte">
             <span class="gamme-item__label">Gamme 02</span>
@@ -269,7 +271,7 @@
     <div class="container">
       <div class="footer__inner">
         <div>
-          <div class="footer__logo"><img src="images/logotranspar.png" alt="Benjamin Mahieu"></div>
+          <div class="footer__logo"><img src="images/nouv-logo.png" alt="Benjamin Mahieu"></div>
           <p class="footer__nom">Benjamin MAHIEU</p>
           <p class="footer__metier">Artisan d'art</p>
           <p class="footer__desc">Diagnostic et Modification de selles d'équitation</p>
