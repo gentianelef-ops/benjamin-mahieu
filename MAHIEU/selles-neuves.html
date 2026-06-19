@@ -135,12 +135,26 @@
       .footer__inner{grid-template-columns:1fr;gap:32px;}
       .footer__bas{flex-direction:column;gap:14px;text-align:center;}
     }
+
+    /* Ajustements ciblés logos */
+    .nav__logo { display: flex; align-items: center; gap: 12px; }
+    .nav__logo-main { filter: brightness(0) invert(1); }
+    .nav__logo-artisan { height: 58px !important; width: auto; filter: none !important; opacity: 1; flex-shrink: 0; }
+    .nav.scrolled .nav__logo-artisan { filter: none !important; }
+    .footer__logo { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .footer__logo-main { height: 56px; width: auto; margin-bottom: 0; filter: brightness(0) invert(1); opacity: 0.85; }
+    .footer__logo-artisan { height: 48px; width: auto; margin-bottom: 0; filter: none !important; opacity: 1; }
+    @media (max-width: 768px) {
+      .nav__logo { gap: 8px; }
+      .nav__logo-artisan { height: 44px !important; }
+      .footer__logo-artisan { height: 42px; }
+    }
   </style>
 </head>
 <body>
   <header>
     <nav class="nav" id="nav">
-      <a href="index.html" class="nav__logo"><img src="images/nouv-logo.png" alt="Benjamin Mahieu" width="200" height="80"></a>
+      <a href="index.html" class="nav__logo"><img class="nav__logo-main" src="images/logo-nouv.png" alt="Benjamin Mahieu" width="200" height="80"><img class="nav__logo-artisan" src="images/artisan-logo.png" alt="Artisan d'art" width="64" height="64"></a>
       <ul class="nav__links">
         <li><a href="diagnostic-modification.html">Modification</a></li>
         <li><a href="selles-neuves.html">Selles neuves évolutives</a></li>
@@ -271,9 +285,7 @@
     <div class="container">
       <div class="footer__inner">
         <div>
-          <div class="footer__logo"><img src="images/nouv-logo.png" alt="Benjamin Mahieu"></div>
-          <p class="footer__nom">Benjamin MAHIEU</p>
-          <p class="footer__metier">Artisan d'art</p>
+          <div class="footer__logo"><img class="footer__logo-main" src="images/logo-nouv.png" alt="Benjamin Mahieu"><img class="footer__logo-artisan" src="images/artisan-logo.png" alt="Artisan d'art"></div>
           <p class="footer__desc">Diagnostic et Modification de selles d'équitation</p>
         </div>
         <div>
